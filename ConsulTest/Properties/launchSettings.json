@@ -19,7 +19,7 @@
     },
     "ConsulTest": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/values",
       "applicationUrl": "http://localhost:5001",
       "environmentVariables": {

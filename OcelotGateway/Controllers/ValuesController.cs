@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AspNetCore2._2.Filter;
 
-namespace AspNetCore2._2.Controllers
+namespace OcelotGateway.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        //[ResourceFilter]
-        //[ActionFilter]
+        // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
-        {           
-            return new string[] { "AspNetCore2.2", "Port:5000" };           
+        {
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
@@ -42,11 +40,6 @@ namespace AspNetCore2._2.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
-        [HttpGet("health")]
-        public ActionResult Health()
-        {
-            return new OkResult();
         }
     }
 }

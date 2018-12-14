@@ -14,7 +14,7 @@ namespace ConsulTest.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "ConsulTest", "Port:5001" };
         }
 
         // GET api/values/5
