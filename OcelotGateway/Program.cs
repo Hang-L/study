@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Middleware.Multiplexer;
 using Ocelot.Provider.Consul;
 
 namespace OcelotGateway
@@ -35,6 +36,7 @@ namespace OcelotGateway
             })
             .ConfigureLogging((hostingContext, logging) =>
             {
+                logging.AddConsole();
                 //add your logging
             })
             .UseIISIntegration()
@@ -68,4 +70,5 @@ namespace OcelotGateway
            ;
 
     }
+   
 }

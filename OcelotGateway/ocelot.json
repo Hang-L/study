@@ -1,12 +1,12 @@
 {
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5500",
-    "ServiceDiscoveryProvider": {
-      "Host": "127.0.0.1",
-      "Port": 8500,
-      "Type": "Consul"
-     
-    }
+    //"ServiceDiscoveryProvider": {
+    //  "Host": "localhost",
+    //  "Port": 8500,
+    //  "Type": "Consul"
+    //},
+    //"RequestIdKey": "OcRequestId"
   },
   "ReRoutes": [
     {
@@ -15,21 +15,74 @@
       "UpstreamHttpMethod": [
         "GET"
       ],
-      "ServiceName": "node1",
-      "LoadBalancerOptions": {
-        "Type": "RoundRobin "
-      },
+      //"UseServiceDiscovery": false,
+      //"ServiceName": "consuls",
+
+      //"LoadBalancerOptions": {
+      //  "Type": "RoundRobin"
+      //},
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": 5000
-        },
+        }
+        //,
+        //{
+        //  "Host": "localhost",
+        //  "Port": 5001
+        //}
+      ],
+      "RateLimitOptions": {
+        "ClientWhiteList": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "Key": "testa"
+    },
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "UpstreamPathTemplate": "/testb",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      //"UseServiceDiscovery": false,
+      //"ServiceName": "consuls",
+
+      //"LoadBalancerOptions": {
+      //  "Type": "RoundRobin"
+      //},
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        //{
+        //  "Host": "localhost",
+        //  "Port": 5000
+        //}
+        //,
         {
           "Host": "localhost",
           "Port": 5001
         }
-      ]
+      ],
+      "RateLimitOptions": {
+        "ClientWhiteList": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "Key": "testb"
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "testa",
+        "testb"
+      ],
+      "UpstreamPathTemplate": "/api/values"
     }
   ]
   
